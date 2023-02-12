@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Guitar;
 
 class GuitarsController extends Controller
 {
@@ -25,7 +26,18 @@ class GuitarsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+     public function index()
+    {
+        // GET
+
+        return view('guitars.index', [
+            'guitars'=> Guitar::all(),
+            'userInput' =>'<script>alert("hellooo")</script>'
+        ]);
+    }
+
+    /* public function index()
     {
         // GET
 
@@ -33,7 +45,7 @@ class GuitarsController extends Controller
             'guitars'=> self::getData(),
             'userInput' =>'<script>alert("hellooo")</script>'
         ]);
-    }
+    } */
 
     /**
      * Show the form for creating a new resource.
@@ -43,6 +55,7 @@ class GuitarsController extends Controller
     public function create()
     {
         // GET
+        return view('guitars.create');
     }
 
     /**
@@ -54,6 +67,16 @@ class GuitarsController extends Controller
     public function store(Request $request)
     {
         // POST
+        $guitar = new Guitar();
+
+        $guitar->name = $request->input('name');
+        $guitar->brand = $request->input('brand');
+        $guitar->year_made = $request->input('year_made');
+
+        $guitar->save();
+
+        return redirect()->route('guitars.index');
+
     }
 
     /**
