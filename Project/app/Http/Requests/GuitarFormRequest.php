@@ -33,7 +33,7 @@ class GuitarFormRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'name' => strip_tags($this['name']),
+            'name' => strip_tags($this->name),
             'brand' => strip_tags($this -> brand),
             'year_made' => strip_tags($this ->year_made)
         ]);

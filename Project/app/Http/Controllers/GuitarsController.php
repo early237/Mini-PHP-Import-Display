@@ -66,8 +66,22 @@ class GuitarsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
      public function store(GuitarFormRequest $request)
+     {
+         // POST
+ 
+        $data = $request->validated();
+ 
+ 
+ 
+         Guitar::create($data);
+ 
+         return redirect()->route('guitars.index');
+ 
+     }
+
+
+     /* public function store(GuitarFormRequest $request)
     {
         // POST
 
@@ -85,7 +99,7 @@ class GuitarsController extends Controller
 
         return redirect()->route('guitars.index');
 
-    }
+    } */
     /* public function store(Request $request)
     {
         // POST
@@ -170,7 +184,22 @@ class GuitarsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+
      public function update(GuitarFormRequest $request, Guitar $guitar)
+     {
+         // POST
+ 
+         $data = $request->validated();
+
+         $guitar->update($data);
+ 
+ 
+         return redirect()->route('guitars.show', $guitar->id);
+ 
+     }
+
+
+     /* public function update(GuitarFormRequest $request, Guitar $guitar)
     {
         // POST
 
@@ -188,7 +217,7 @@ class GuitarsController extends Controller
 
         return redirect()->route('guitars.show', $guitar->id);
 
-    }
+    } */
     /* public function update(Request $request, Guitar $guitar)
     {
         // POST
