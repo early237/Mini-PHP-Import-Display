@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Guitar;
+use App\Http\Requests\GuitarFormRequest;
 
 class GuitarsController extends Controller
 {
@@ -64,20 +65,50 @@ class GuitarsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+
+     public function store(GuitarFormRequest $request)
     {
         // POST
+
+       $data = $request->validated();
+
+
+
         $guitar = new Guitar();
 
-        $guitar->name = $request->input('name');
-        $guitar->brand = $request->input('brand');
-        $guitar->year_made = $request->input('year_made');
+        $guitar->name = $data['name'];
+        $guitar->brand = $data['brand'];
+        $guitar->year_made = $data['year_made'];
 
         $guitar->save();
 
         return redirect()->route('guitars.index');
 
     }
+    /* public function store(Request $request)
+    {
+        // POST
+
+        $request->validate([
+            'name' => 'required',
+            'brand' => 'required',
+            'year_made' => ['required', 'integer'],
+        ]);
+
+
+
+        $guitar = new Guitar();
+
+        $guitar->name = strip_tags($request->input('name'));
+        $guitar->brand = strip_tags($request->input('brand'));
+        $guitar->year_made = strip_tags($request->input('year_made'));
+
+        $guitar->save();
+
+        return redirect()->route('guitars.index');
+
+    } */
 
     /**
      * Display the specified resource.
@@ -85,7 +116,18 @@ class GuitarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($guitar)
+
+
+     public function show(Guitar $guitar)
+    {
+        // GET
+        return view('guitars.show', [
+            'guitar'=> $guitar
+        
+        ]);
+    }
+
+    /* public function show($guitar)
     {
         // GET
         $guitars = self::getData();
@@ -101,7 +143,7 @@ class GuitarsController extends Controller
             'guitar'=> $guitars[$index]
         
         ]);
-    }
+    } */
 
     /**
      * Show the form for editing the specified resource.
@@ -109,9 +151,15 @@ class GuitarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Guitar $guitar)
     {
         // GET
+        return view('guitars.edit', [
+           /*  'guitar'=> Guitar::findOrFail($guitar) */
+           'guitar'=> $guitar
+        
+        ]);
+        
     }
 
     /**
@@ -121,10 +169,49 @@ class GuitarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+     public function update(GuitarFormRequest $request, Guitar $guitar)
     {
         // POST
+
+        $data = $request->validated();
+
+
+
+       // $record = Guitar::findOrFail($guitar);
+
+       $guitar->name = $data['name'];
+       $guitar->brand = $data['brand'];
+       $guitar->year_made = $data['year_made'];
+
+        $guitar->save();
+
+        return redirect()->route('guitars.show', $guitar->id);
+
     }
+    /* public function update(Request $request, Guitar $guitar)
+    {
+        // POST
+
+        $request->validate([
+            'name' => 'required',
+            'brand' => 'required',
+            'year_made' => ['required', 'integer'],
+        ]);
+
+
+
+       // $record = Guitar::findOrFail($guitar);
+
+        $guitar->name = strip_tags($request->input('name'));
+        $guitar->brand = strip_tags($request->input('brand'));
+        $guitar->year_made = strip_tags($request->input('year_made'));
+
+        $guitar->save();
+
+        return redirect()->route('guitars.show', $guitar->id);
+
+    } */
 
     /**
      * Remove the specified resource from storage.

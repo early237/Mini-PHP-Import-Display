@@ -11,6 +11,9 @@
                 <li>
                     Made By : {{$guitar['brand']}}
                 </li>
+                <li>
+                Year Made : {{$guitar['year_made']}}
+                </li>
             </ul>
         
     </div>
