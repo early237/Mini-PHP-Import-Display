@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Guitar;
 use App\Http\Requests\GuitarFormRequest;
 
+//RESOURCE CONTOLLER - Layouts database action methods for you
+// CRUD - Create/Read/Update/Delete
+
 class GuitarsController extends Controller
 {
 
@@ -71,8 +74,6 @@ class GuitarsController extends Controller
          // POST
  
         $data = $request->validated();
- 
- 
  
          Guitar::create($data);
  
@@ -146,6 +147,7 @@ class GuitarsController extends Controller
         // GET
         $guitars = self::getData();
 
+        //Seaches array function (multidimentional array - array_column search using id)
         $index = array_search($guitar, array_column($guitars, 'id'));
 
         if($index === false)

@@ -15,17 +15,25 @@ use App\Http\Controllers\GuitarsController;
 |
 */
 
+//GET Method --- URL String - 'index' = Name of method - Name of route = 'home.index' = *use name of controller and name of method (needs to be unique)
 Route::get('/', [HomeController::class, 'index'])->name('home.index'); 
 Route::get('/about', [HomeController::class, 'about'])->name('home.about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 
-
+//Resoruce Method --- Creates routes using method names automatically 'guitars' = URL string prefix E.G guitars/create
 Route::resource('guitars', GuitarsController::class);
 
+
+
+// BASIC GET request for URL - Executes function, passes string of 'Welcome' and returns view 'Welcome' (home page)
 /* Route::get('/', function () {
     return view('welcome');
 }); 
 
+// Returns just string - Even when there is no view
+/* Route::get('/', function () {
+    return '<h1>Hello Test<h1>';
+}); 
 
 Route::get('/about', function () {
     return 'about';
@@ -36,8 +44,13 @@ Route::get('/contact', function () {
 }); */
 
 
+
+
+// Query String Example
+// Using Route Parameters - Wildcards
 Route::get('/store/{category?}/{item?}', function($category = null, $item = null){
     
+    // No request function needed
 
     if(isset($category))
     {
@@ -56,10 +69,17 @@ Route::get('/store/{category?}/{item?}', function($category = null, $item = null
 });
 
 
+
+
+// Query String Example 2
 //Sanitize input practise
-/* Route::get('/store', function(){
+//URL /store?category=guitars
+Route::get('/store', function(){
+
+    //Request function - Want to get category string
     $category = request('category');
 
+    //Never trust user input (Sanitise inputs - Strips HTML Tags)
     if(isset($category))
     {
         return 'You are viewing the store for ' . strip_tags($category);
@@ -67,4 +87,4 @@ Route::get('/store/{category?}/{item?}', function($category = null, $item = null
 
     return 'You are viewing all data';
     
-}); */
+});

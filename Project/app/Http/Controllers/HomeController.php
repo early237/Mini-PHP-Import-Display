@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+//NORMAL CONTROLLER
+
 class HomeController extends Controller
 {
-    //
+    //Action Methods
     public function index()
     {
             return view('welcome');
