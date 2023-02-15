@@ -5,6 +5,7 @@
 
 <form class="form bg-white p-6 border-1" method="POST" action="{{ route('guitars.store') }}">
     @csrf
+<!-- Prevents attack -- Needed in forms -- Otherwise Errors -->
     <div>
         <label class="text-sm" for="name">Guitar Name</label>
         <input class="text-lg border-1" type="text" id="name" value="{{ old('name') }}" name="name">

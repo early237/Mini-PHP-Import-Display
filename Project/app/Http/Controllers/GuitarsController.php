@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Guitar;
+use App\Models\Guitar; //imported to communicate with guitars database table
 use App\Http\Requests\GuitarFormRequest;
 
 //RESOURCE CONTOLLER - Layouts database action methods for you
@@ -88,8 +88,6 @@ class GuitarsController extends Controller
 
        $data = $request->validated();
 
-
-
         $guitar = new Guitar();
 
         $guitar->name = $data['name'];
@@ -101,9 +99,13 @@ class GuitarsController extends Controller
         return redirect()->route('guitars.index');
 
     } */
+
+
     /* public function store(Request $request)
     {
         // POST
+
+
 
         $request->validate([
             'name' => 'required',
@@ -112,9 +114,10 @@ class GuitarsController extends Controller
         ]);
 
 
-
+        // Create new object  (guitar model)
         $guitar = new Guitar();
 
+        //assign data based on columns
         $guitar->name = strip_tags($request->input('name'));
         $guitar->brand = strip_tags($request->input('brand'));
         $guitar->year_made = strip_tags($request->input('year_made'));
