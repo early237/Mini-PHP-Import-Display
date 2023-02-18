@@ -11,7 +11,7 @@ class HomeController extends Controller
     //Action Methods
     public function index()
     {
-            return view('welcome');
+            return view('dashboard');
     }
 
     public function about()

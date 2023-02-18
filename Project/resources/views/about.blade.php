@@ -8,7 +8,7 @@
         <h1>About Us</h1>
     </div>
 
-    <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+    <div>
         <p>This is the about page</p>
     </div>
 </div>

@@ -8,7 +8,7 @@
         <h1>Contact Us</h1>
     </div>
 
-    <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+    <div >
         <p>This is the contact page</p>
     </div>
 
@@ -16,8 +16,8 @@
 </div>
 @endsection
 
-@section('scripts')
+<!-- @section('scripts')
 <script>
-    alert('Hello');
+    
 </script>
-@endsection
+@endsection -->

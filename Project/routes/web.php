@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GuitarsController;
+use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +17,42 @@ use App\Http\Controllers\GuitarsController;
 |
 */
 
+Route::get('/', [LoginController::class, 'index'])->name('login.index');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('home.index');
+
+Route::get('/import-users', [EmployeesController::class, 'importEmployees'])->name('import.index');
+Route::post('/upload-users', [EmployeesController::class, 'uploadEmployees'])->name('upload.index');
+
+
+Route::resource('employees', EmployeesController::class);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* VIDEO TUTORIAL PRACTISE */
+
 //GET Method --- URL String - 'index' = Name of method - Name of route = 'home.index' = *use name of controller and name of method (needs to be unique)
-Route::get('/', [HomeController::class, 'index'])->name('home.index'); 
+//Route::get('/welcome', [HomeController::class, 'index'])->name('home.index'); 
 Route::get('/about', [HomeController::class, 'about'])->name('home.about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 

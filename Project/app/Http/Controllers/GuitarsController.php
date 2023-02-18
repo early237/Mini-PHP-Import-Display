@@ -41,16 +41,6 @@ class GuitarsController extends Controller
         ]);
     }
 
-    /* public function index()
-    {
-        // GET
-
-        return view('guitars.index', [
-            'guitars'=> self::getData(),
-            'userInput' =>'<script>alert("hellooo")</script>'
-        ]);
-    } */
-
     /**
      * Show the form for creating a new resource.
      *
@@ -82,52 +72,6 @@ class GuitarsController extends Controller
      }
 
 
-     /* public function store(GuitarFormRequest $request)
-    {
-        // POST
-
-       $data = $request->validated();
-
-        $guitar = new Guitar();
-
-        $guitar->name = $data['name'];
-        $guitar->brand = $data['brand'];
-        $guitar->year_made = $data['year_made'];
-
-        $guitar->save();
-
-        return redirect()->route('guitars.index');
-
-    } */
-
-
-    /* public function store(Request $request)
-    {
-        // POST
-
-
-
-        $request->validate([
-            'name' => 'required',
-            'brand' => 'required',
-            'year_made' => ['required', 'integer'],
-        ]);
-
-
-        // Create new object  (guitar model)
-        $guitar = new Guitar();
-
-        //assign data based on columns
-        $guitar->name = strip_tags($request->input('name'));
-        $guitar->brand = strip_tags($request->input('brand'));
-        $guitar->year_made = strip_tags($request->input('year_made'));
-
-        $guitar->save();
-
-        return redirect()->route('guitars.index');
-
-    } */
-
     /**
      * Display the specified resource.
      *
@@ -145,24 +89,6 @@ class GuitarsController extends Controller
         ]);
     }
 
-    /* public function show($guitar)
-    {
-        // GET
-        $guitars = self::getData();
-
-        //Seaches array function (multidimentional array - array_column search using id)
-        $index = array_search($guitar, array_column($guitars, 'id'));
-
-        if($index === false)
-        {
-            abort(404);
-        }
-
-        return view('guitars.show', [
-            'guitar'=> $guitars[$index]
-        
-        ]);
-    } */
 
     /**
      * Show the form for editing the specified resource.
@@ -204,7 +130,98 @@ class GuitarsController extends Controller
      }
 
 
-     /* public function update(GuitarFormRequest $request, Guitar $guitar)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        // DELETE
+    }
+
+
+
+/* OTHER APPROACHES FOR VARIOUS METHODS */
+
+
+    /* public function index()
+    {
+        // GET
+
+        return view('guitars.index', [
+            'guitars'=> self::getData(),
+            'userInput' =>'<script>alert("hellooo")</script>'
+        ]);
+    } */
+
+    /* public function store(GuitarFormRequest $request)
+    {
+        // POST
+
+       $data = $request->validated();
+
+        $guitar = new Guitar();
+
+        $guitar->name = $data['name'];
+        $guitar->brand = $data['brand'];
+        $guitar->year_made = $data['year_made'];
+
+        $guitar->save();
+
+        return redirect()->route('guitars.index');
+
+    } */
+
+
+    /* public function store(Request $request)
+    {
+        // POST
+
+        $request->validate([
+            'name' => 'required',
+            'brand' => 'required',
+            'year_made' => ['required', 'integer'],
+        ]);
+
+
+        // Create new object  (guitar model)
+        $guitar = new Guitar();
+
+        //assign data based on columns
+        $guitar->name = strip_tags($request->input('name'));
+        $guitar->brand = strip_tags($request->input('brand'));
+        $guitar->year_made = strip_tags($request->input('year_made'));
+
+        $guitar->save();
+
+        return redirect()->route('guitars.index');
+
+    } */
+
+
+    /* public function show($guitar)
+    {
+        // GET
+        $guitars = self::getData();
+
+        //Seaches array function (multidimentional array - array_column search using id)
+        $index = array_search($guitar, array_column($guitars, 'id'));
+
+        if($index === false)
+        {
+            abort(404);
+        }
+
+        return view('guitars.show', [
+            'guitar'=> $guitars[$index]
+        
+        ]);
+    } */
+
+
+    /* public function update(GuitarFormRequest $request, Guitar $guitar)
     {
         // POST
 
@@ -246,15 +263,4 @@ class GuitarsController extends Controller
         return redirect()->route('guitars.show', $guitar->id);
 
     } */
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        // DELETE
-    }
 }
