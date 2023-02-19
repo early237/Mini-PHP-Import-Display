@@ -28,7 +28,7 @@
     </div>
    
     <div>
-        <button class=" border-1" type="submit">Submit</button>
+        <button class=" border-1" type="submit">Login</button>
        <!--  <button class=" border-1" type="button" onclick="window.location={{route('register.index')}}">Register</button> -->
         <button class=" border-1" type="button" onclick="window.location='{{ URL::route('register.index'); }}'">Register</button>
 

@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\GuitarsController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsersController;
@@ -64,7 +63,7 @@ Route::get('/about', [HomeController::class, 'about'])->name('home.about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('home.contact');
 
 //Resoruce Method --- Creates routes using method names automatically 'guitars' = URL string prefix E.G guitars/create
-Route::resource('guitars', GuitarsController::class);
+//Route::resource('guitars', GuitarsController::class);
 
 
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Employee; //imported to communicate with guitars database table
+use App\Models\Employee; //imported to communicate with employee database table
 use App\Imports\EmployeesImport;
 use Maatwebsite\Excel\Facades\Excel;
 
