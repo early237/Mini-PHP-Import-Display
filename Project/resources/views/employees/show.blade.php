@@ -55,7 +55,7 @@
    
     </tbody>
 </table>
-
+<button class=" border-1" type="button" onclick="window.location='{{ URL::route('employees.index'); }}'">Go back</button>
 </div>
 
 @endsection

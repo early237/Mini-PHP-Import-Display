@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GuitarsController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +19,19 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::get('/', [LoginController::class, 'index'])->name('login.index');
+Route::get('/register', [UsersController::class, 'registerIndex'])->name('register.index');
+Route::post('/login', [UsersController::class, 'login'])->name('users.login');
+
+
 Route::get('/dashboard', [HomeController::class, 'index'])->name('home.index');
 
 Route::get('/import-users', [EmployeesController::class, 'importEmployees'])->name('import.index');
 Route::post('/upload-users', [EmployeesController::class, 'uploadEmployees'])->name('upload.index');
 
 
+
 Route::resource('employees', EmployeesController::class);
+Route::resource('users', UsersController::class);
 
 
 
