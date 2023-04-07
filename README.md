@@ -12,7 +12,7 @@ Getting started/Cloning Repo After Laravel has been installed and when a fresh c
 - Run php artisan serve
 When importing data, please download and use the "testData" CSV in this repo.
 
-The database system used was a local WAMP/PhpMyAdmin server. By running php artisan migrate creates the necessary tables as long as the server is running.
+The database system used was a local WAMP/PhpMyAdmin server. By running php artisan migrate creates the necessary tables as long as the server is running and database credentials set within the .env config file.
 
 That should be eveything needed to start using the app. Enjoy!
 
